@@ -3,6 +3,9 @@
     {{ msg }}
 <br>
 {{ count }}
+
+<button @click="transMsg">transMsg</button>
+
 </div>
 
 </template>
@@ -13,6 +16,14 @@ defineProps({
     count:Number
 
 })
+
+const emit = defineEmits(['msg-trans'])
+//通过defineEmits编译器宏生成emit方法
+
+const transMsg = () => {
+    emit('msg-trans', 'This from Son component')
+    // 触发自定义事件msg-trans  传递参数
+}
 
 </script>
 
